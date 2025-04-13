@@ -1,0 +1,197 @@
+{
+  "collections": [
+    {
+      "id": "1",
+      "name": "My Collection",
+      "files": [
+        {
+          "id": "1-1",
+          "name": "User APIs",
+          "type": "folder",
+          "items": [
+            {
+              "id": "1-1-1",
+              "name": "Get User",
+              "type": "api",
+              "method": "GET",
+              "url": "https://api.example.com/users/{id}",
+              "headers": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "params": [
+                {
+                  "key": "id",
+                  "value": "123",
+                  "enabled": true
+                }
+              ]
+            },
+            {
+              "id": "1-1-2",
+              "name": "Create User",
+              "type": "api",
+              "method": "POST",
+              "url": "https://api.example.com/users",
+              "headers": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "body": {
+                "type": "raw",
+                "format": "JSON",
+                "content": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\"\n}"
+              }
+            },
+            {
+              "id": "1-1-3",
+              "name": "Update User",
+              "type": "api",
+              "method": "PUT",
+              "url": "https://api.example.com/users/{id}",
+              "headers": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "body": {
+                "type": "raw",
+                "format": "JSON",
+                "content": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\"\n}"
+              }
+            }
+          ]
+        },
+        {
+          "id": "1-2",
+          "name": "Product APIs",
+          "type": "folder",
+          "items": [
+            {
+              "id": "1-2-1",
+              "name": "Get Products",
+              "type": "api",
+              "method": "GET",
+              "url": "https://api.example.com/products",
+              "headers": [
+                {
+                  "id": "1-1",
+                  "name": "Get User",
+                  "type": "api",
+                  "method": "GET",
+                  "url": "https://api.example.com/users/{id}",
+                  "headers": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "enabled": true
+                    }
+                  ],
+                  "params": [
+                    {
+                      "key": "id",
+                      "value": "123",
+                      "enabled": true
+                    }
+                  ]
+                },
+                {
+                  "id": "1-1-2",
+                  "name": "Create User",
+                  "type": "api",
+                  "method": "POST",
+                  "url": "https://api.example.com/users",
+                  "headers": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "enabled": true
+                    }
+                  ],
+                  "body": {
+                    "type": "raw",
+                    "format": "JSON",
+                    "content": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\"\n}"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1-2",
+          "name": "Product APIs",
+          "type": "folder",
+          "items": [
+            {
+              "id": "1-2-1",
+              "name": "Get Products",
+              "type": "api",
+              "method": "GET",
+              "url": "https://api.example.com/products",
+              "headers": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "params": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "enabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "enabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Another Collection",
+      "files": [
+        {
+          "id": "2-1",
+          "name": "Auth APIs",
+          "type": "folder",
+          "items": [
+            {
+              "id": "2-1-1",
+              "name": "Login",
+              "type": "api",
+              "method": "POST",
+              "url": "https://api.example.com/auth/login",
+              "headers": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "body": {
+                "type": "raw",
+                "format": "JSON",
+                "content": "{\n  \"username\": \"user\",\n  \"password\": \"pass\"\n}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "testCases": {
+    "1-1-1": {
+      "name": "Get User",
+      "testCases": [
+        {
+          "id": "tc1",
+          "name": "Get Existing User",
+          "description": "Test retrieving an existing user with valid ID",
+          "expectedStatus": 200,
+          "requestBody": null,
+          "expectedResponse": {
+            "id": "123",
+            "name": "John Doe",
+            "email": "john@example.com",
+            "createdAt": "2024-01-01T00:00:00Z"
+          }
+        },
+        {
+          "id": "tc2",
+          "name": "Get Non-Existent User",
+          "description": "Test retrieving a user with invalid ID",
+          "expectedStatus": 404,
+          "requestBody": null,
+          "expectedResponse": {
+            "error": "User not found",
+            "message": "The requested user does not exist"
+          }
+        },
+        {
+          "id": "tc1",
+          "name": "Get Existing User",
+          "description": "Test retrieving an existing user with valid ID",
+          "expectedStatus": 200,
+          "requestBody": null,
+          "expectedResponse": {
+            "id": "123",
+            "name": "John Doe",
+            "email": "john@example.com",
+            "createdAt": "2024-01-01T00:00:00Z"
+          }
+        },
+        {
+          "id": "tc2",
+          "name": "Get Non-Existent User",
+          "description": "Test retrieving a user with invalid ID",
+          "expectedStatus": 404,
+          "requestBody": null,
+          "expectedResponse": {
+            "error": "User not found",
+            "message": "The requested user does not exist"
+          }
+        },        {
+          "id": "tc1",
+          "name": "Get Existing User",
+          "description": "Test retrieving an existing user with valid ID",
+          "expectedStatus": 200,
+          "requestBody": null,
+          "expectedResponse": {
+            "id": "123",
+            "name": "John Doe",
+            "email": "john@example.com",
+            "createdAt": "2024-01-01T00:00:00Z"
+          }
+        },
+        {
+          "id": "tc2",
+          "name": "Get Non-Existent User",
+          "description": "Test retrieving a user with invalid ID",
+          "expectedStatus": 404,
+          "requestBody": null,
+          "expectedResponse": {
+            "error": "User not found",
+            "message": "The requested user does not exist"
+          }
+        },        {
+          "id": "tc1",
+          "name": "Get Existing User",
+          "description": "Test retrieving an existing user with valid ID",
+          "expectedStatus": 200,
+          "requestBody": null,
+          "expectedResponse": {
+            "id": "123",
+            "name": "John Doe",
+            "email": "john@example.com",
+            "createdAt": "2024-01-01T00:00:00Z"
+          }
+        },
+        {
+          "id": "tc2",
+          "name": "Get Non-Existent User",
+          "description": "Test retrieving a user with invalid ID",
+          "expectedStatus": 404,
+          "requestBody": null,
+          "expectedResponse": {
+            "error": "User not found",
+            "message": "The requested user does not exist"
+          }
+        },        {
+          "id": "tc1",
+          "name": "Get Existing User",
+          "description": "Test retrieving an existing user with valid ID",
+          "expectedStatus": 200,
+          "requestBody": null,
+          "expectedResponse": {
+            "id": "123",
+            "name": "John Doe",
+            "email": "john@example.com",
+            "createdAt": "2024-01-01T00:00:00Z"
+          }
+        },
+        {
+          "id": "tc2",
+          "name": "Get Non-Existent User",
+          "description": "Test retrieving a user with invalid ID",
+          "expectedStatus": 404,
+          "requestBody": null,
+          "expectedResponse": {
+            "error": "User not found",
+            "message": "The requested user does not exist"
+          }
+        }
+      ],
+      "responseTimes": [100, 150, 120, 180, 200, 160, 140, 170, 190, 130],
+      "successTestCases": [4, 5, 6, 2, 4, 1, 8, 7, 3, 10]
+    }
+  }
+}

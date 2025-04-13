@@ -1,0 +1,115 @@
+{  "collections": [
+    {
+      "id": "1",
+      "name": "Sample Collection",
+      "type": "folder",
+      "files": [
+        {
+          "id": "1",
+          "name": "Get Users",
+          "type": "api",
+          "method": "GET",
+          "url": "https://quizgenius.onrender.com/createtest/getquizdetails/67fb4fc394e34a42e7478a8f",
+          "headers": [
+            {
+              "key": "authorization",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZiM2Y2NjlmYjliNjMwMGU3NTVhOTkiLCJpYXQiOjE3NDQ1MTkwMTYsImV4cCI6MTc0NDU0NzgxNn0.0kaWthO4_yBt4M8f14gb3i5Ye9mbi4WqD4AhoTHVUEQ"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": "Create User",
+          "type": "api",
+          "method": "POST",
+          "url": "https://api.example.com/users",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "name": "John Doe",
+            "email": "john@example.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Another Collection",
+      "type": "folder",
+      "files": [
+        {
+          "id": "3",
+          "name": "Update User",
+          "type": "api",
+          "method": "PUT",
+          "url": "https://api.example.com/users/1",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "name": "Updated Name",
+            "email": "updated@example.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Get Users",
+      "type": "api",
+      "method": "DELETE",
+      "url": "https://quizgenius.onrender.com/createtest/getquizdetails/67fb4fc394e34a42e7478a8f",
+      "headers": [
+        {
+          "key": "authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZiM2Y2NjlmYjliNjMwMGU3NTVhOTkiLCJpYXQiOjE3NDQ1MTkwMTYsImV4cCI6MTc0NDU0NzgxNn0.0kaWthO4_yBt4M8f14gb3i5Ye9mbi4WqD4AhoTHVUEQ"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Get Users",
+      "type": "api",
+      "method": "POST",
+      "url": "https://quizgenius.onrender.com/createtest/getquizdetails/67fb4fc394e34a42e7478a8f",
+      "headers": [
+        {
+          "key": "authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZiM2Y2NjlmYjliNjMwMGU3NTVhOTkiLCJpYXQiOjE3NDQ1MTkwMTYsImV4cCI6MTc0NDU0NzgxNn0.0kaWthO4_yBt4M8f14gb3i5Ye9mbi4WqD4AhoTHVUEQ"
+        }
+      ]
+    },{
+      "id": "1",
+      "name": "Get Users",
+      "type": "api",
+      "method": "GET",
+      "url": "https://quizgenius.onrender.com/createtest/getquizdetails/67fb4fc394e34a42e7478a8f",
+      "headers": [
+        {
+          "key": "authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZiM2Y2NjlmYjliNjMwMGU3NTVhOTkiLCJpYXQiOjE3NDQ1MTkwMTYsImV4cCI6MTc0NDU0NzgxNn0.0kaWthO4_yBt4M8f14gb3i5Ye9mbi4WqD4AhoTHVUEQ"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Get Users",
+      "type": "api",
+      "method": "PUT",
+      "url": "https://quizgenius.onrender.com/createtest/getquizdetails/67fb4fc394e34a42e7478a8f",
+      "headers": [
+        {
+          "key": "authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2ZiM2Y2NjlmYjliNjMwMGU3NTVhOTkiLCJpYXQiOjE3NDQ1MTkwMTYsImV4cCI6MTc0NDU0NzgxNn0.0kaWthO4_yBt4M8f14gb3i5Ye9mbi4WqD4AhoTHVUEQ"
+        }
+      ]
+    }
+  ]
+}
