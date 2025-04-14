@@ -1,4 +1,5 @@
-import React from 'react';import {
+import React from 'react';
+import {
   Box,
   Typography,
   Paper,
@@ -21,6 +22,7 @@ import {
   PlayArrow as PlayIcon,
   ContentCopy as CopyIcon,
   Fullscreen as FullscreenIcon,
+  Api as ApiIcon,
 } from '@mui/icons-material';
 import testCasesData from '../data/testCases.json';
 import {
@@ -41,7 +43,11 @@ interface TestCase {
   description: string;
   expectedStatus: number;
   expectedResponse: Record<string, unknown>;
-  requestBody: Record<string, unknown> | null;
+  requestBody: {
+    url: string;
+    method: string;
+    [key: string]: unknown;
+  } | null;
 }
 
 interface TestCasesData {
@@ -59,6 +65,18 @@ interface ChartDataPoint {
   name: string;
   responseTime: number;
   successCases: number;
+}
+
+interface Api {
+  id: string;
+  method: string;
+  name: string;
+  url: string;
+  headers: Record<string, string>;
+  body: Record<string, unknown>;
+  testCases: TestCase[];
+  responseTimes: number[];
+  successTestCases: number[];
 }
 
 const ApiDetails: React.FC = () => {
@@ -110,6 +128,24 @@ const ApiDetails: React.FC = () => {
     setOpenDialog(false);
   };
 
+  const handleRunAllTests = () => {
+    // Implementation of handleRunAllTests
+  };
+
+  const api: Api = {
+    id: apiId,
+    method: apiTestCases[0].requestBody ? 'POST' : 'GET',
+    name: apiTestCases[0].requestBody ? apiTestCases[0].name : 'Get User',
+    url: apiTestCases[0].requestBody
+      ? apiTestCases[0].requestBody.url
+      : '/api/users/{id}',
+    headers: {},
+    body: apiTestCases[0].requestBody || {},
+    testCases: apiTestCases,
+    responseTimes: apiData.responseTimes,
+    successTestCases: apiData.successTestCases,
+  };
+
   return (
     <Box sx={{ p: 3, backgroundColor: '#1a1a1a' }}>
       {/* API Details Section */}
@@ -125,18 +161,53 @@ const ApiDetails: React.FC = () => {
         <Stack direction="row" spacing={2} alignItems="center" mb={2}>
           <Chip
             icon={getMethodIcon()}
-            label="GET"
+            label={api.method}
             color={getMethodColor()}
             sx={{ px: 2, py: 1 }}
           />
-          <Typography variant="h4" sx={{ fontWeight: 600 }}>
-            Get User
+          <Typography variant="h4" sx={{ fontWeight: 600, color: '#e0e0e0' }}>
+            {api.name}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Button
+            variant="outlined"
+            startIcon={<ApiIcon />}
+            onClick={() =>
+              window.open(
+                `/api-tester?url=${encodeURIComponent(api.url)}&method=${
+                  api.method
+                }`,
+                '_blank'
+              )
+            }
+            sx={{
+              borderRadius: 2,
+              textTransform: 'none',
+              px: 3,
+              color: '#9cdcfe',
+              borderColor: '#9cdcfe',
+              mr: 2,
+              '&:hover': {
+                borderColor: '#9cdcfe',
+                backgroundColor: 'rgba(156, 220, 254, 0.1)',
+              },
+            }}
+          >
+            Open in API Tester
+          </Button>
+          <Button
             variant="contained"
             startIcon={<PlayIcon />}
-            sx={{ borderRadius: 2, textTransform: 'none', px: 3 }}
+            onClick={handleRunAllTests}
+            sx={{
+              borderRadius: 2,
+              textTransform: 'none',
+              px: 3,
+              backgroundColor: '#1976d2',
+              '&:hover': {
+                backgroundColor: '#1565c0',
+              },
+            }}
           >
             Run All Tests
           </Button>
@@ -144,12 +215,12 @@ const ApiDetails: React.FC = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
           <Typography variant="body1" color="text.secondary">
-            /api/users/{'{id}'}
+            {api.url}
           </Typography>
           <Tooltip title="Copy URL">
             <IconButton
               size="small"
-              onClick={() => copyToClipboard('/api/users/{id}')}
+              onClick={() => copyToClipboard(api.url)}
               sx={{ color: 'text.secondary' }}
             >
               <CopyIcon fontSize="small" />
@@ -222,41 +293,30 @@ const ApiDetails: React.FC = () => {
               }}
             >
               <Box sx={{ position: 'relative', zIndex: 1 }}>
-                {apiTestCases.length > 0 ? (
-                  <Typography variant="body2" sx={{ color: '#9cdcfe' }}>
-                    {JSON.stringify(apiTestCases[0].requestBody, null, 2)
-                      .split('\n')
-                      .map((line, i) => (
-                        <Box
-                          key={i}
-                          sx={{ display: 'flex', alignItems: 'flex-start' }}
-                        >
-                          <Typography
-                            component="span"
-                            sx={{
-                              color: '#6a9955',
-                              minWidth: '20px',
-                              textAlign: 'right',
-                              mr: 1,
-                              opacity: 0.7,
-                            }}
-                          >
-                            {i + 1}
-                          </Typography>
-                          <Typography
-                            component="span"
-                            sx={{ color: '#d4d4d4' }}
-                          >
-                            {line}
-                          </Typography>
-                        </Box>
-                      ))}
-                  </Typography>
-                ) : (
-                  <Typography variant="body2" sx={{ color: '#6a9955' }}>
-                    No body required
-                  </Typography>
-                )}
+                {Object.entries(api.body).map(([key, value], index) => (
+                  <Box
+                    key={index}
+                    sx={{ display: 'flex', alignItems: 'flex-start' }}
+                  >
+                    <Typography
+                      component="span"
+                      sx={{
+                        color: '#6a9955',
+                        minWidth: '20px',
+                        textAlign: 'right',
+                        mr: 1,
+                        opacity: 0.7,
+                      }}
+                    >
+                      {key}:
+                    </Typography>
+                    <Typography component="span" sx={{ color: '#d4d4d4' }}>
+                      {typeof value === 'object'
+                        ? JSON.stringify(value)
+                        : value}
+                    </Typography>
+                  </Box>
+                ))}
               </Box>
             </Paper>
           </Box>
@@ -269,7 +329,7 @@ const ApiDetails: React.FC = () => {
       </Typography>
 
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-        {apiTestCases.map((testCase) => (
+        {api.testCases.map((testCase) => (
           <Box
             key={testCase.id}
             sx={{ flex: '1 1 calc(50% - 12px)', minWidth: 300 }}
@@ -484,8 +544,41 @@ const ApiDetails: React.FC = () => {
               <CardActions sx={{ p: 2, pt: 0 }}>
                 <Button
                   variant="outlined"
+                  startIcon={<ApiIcon />}
+                  onClick={() =>
+                    window.open(
+                      `/api-tester?url=${encodeURIComponent(
+                        testCase.requestBody?.url || api.url
+                      )}&method=${testCase.requestBody?.method || api.method}`,
+                      '_blank'
+                    )
+                  }
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    color: '#9cdcfe',
+                    borderColor: '#9cdcfe',
+                    mr: 1,
+                    '&:hover': {
+                      borderColor: '#9cdcfe',
+                      backgroundColor: 'rgba(156, 220, 254, 0.1)',
+                    },
+                  }}
+                >
+                  Open in Tester
+                </Button>
+                <Button
+                  variant="outlined"
                   startIcon={<PlayIcon />}
-                  sx={{ borderRadius: 2, textTransform: 'none' }}
+                  onClick={() => handleRunAllTests()}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    '&:hover': {
+                      borderColor: 'rgba(255, 4, 0, 0.1)',
+                      backgroundColor: 'rgba(228, 116, 115, 0.1)',
+                    },
+                  }}
                 >
                   Run Test
                 </Button>
